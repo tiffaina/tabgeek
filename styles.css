@@ -4,9 +4,10 @@ body {
   }
   
   #search {
-    width: calc(100% - 20px);
-    padding: 10px;
+    width: 200px; /* Set a fixed width */
+    padding: 5px;  /* Adjust padding for a more compact size */
     margin-bottom: 10px;
+    box-sizing: border-box; /* Ensure padding and border are included in the element's total width and height */
   }
   
   #results {
