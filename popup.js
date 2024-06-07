@@ -5,13 +5,18 @@ document.addEventListener('DOMContentLoaded', function () {
     searchInput.addEventListener('keypress', function (e) {
       if (e.key === 'Enter') {
         const query = searchInput.value.toLowerCase();
+        console.log(`Search query: ${query}`);  // Debug log
   
         chrome.storage.local.get(['allTabs'], (result) => {
           const allTabs = result.allTabs || [];
+          console.log(`All tabs retrieved:`, allTabs);  // Debug log
+  
           const filteredTabs = allTabs.filter(tab => 
             tab.title.toLowerCase().includes(query) || 
             tab.url.toLowerCase().includes(query)
           );
+  
+          console.log(`Filtered tabs:`, filteredTabs);  // Debug log
   
           resultsList.innerHTML = '';
           filteredTabs.forEach(tab => {
