@@ -8,6 +8,11 @@ document.addEventListener('DOMContentLoaded', function () {
       console.log(`Search query: ${query}`);  // Debug log
   
       chrome.storage.local.get(['allTabs'], (result) => {
+        if (chrome.runtime.lastError) {
+          console.error('Error retrieving tabs:', chrome.runtime.lastError);
+          return;
+        }
+  
         const allTabs = result.allTabs || [];
         console.log(`All tabs retrieved:`, allTabs);  // Debug log
   
