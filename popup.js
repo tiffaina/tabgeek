@@ -1,7 +1,12 @@
 document.addEventListener('DOMContentLoaded', function () {
+    console.log('Popup DOM content loaded');  // Debug log
+  
     const searchInput = document.getElementById('search');
     const findButton = document.getElementById('findButton');
     const resultsList = document.getElementById('results');
+  
+    console.log('Search input:', searchInput);  // Debug log
+    console.log('Find button:', findButton);  // Debug log
   
     const searchTabs = () => {
       const query = searchInput.value.toLowerCase();
@@ -37,11 +42,15 @@ document.addEventListener('DOMContentLoaded', function () {
     };
   
     searchInput.addEventListener('keypress', function (e) {
+      console.log('Key pressed:', e.key);  // Debug log
       if (e.key === 'Enter') {
         searchTabs();
       }
     });
   
-    findButton.addEventListener('click', searchTabs);
+    findButton.addEventListener('click', function () {
+      console.log('Find button clicked');  // Debug log
+      searchTabs();
+    });
   });
   
