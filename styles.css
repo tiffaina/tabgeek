@@ -1,0 +1,25 @@
+body {
+    font-family: Arial, sans-serif;
+    padding: 10px;
+  }
+  
+  #search {
+    width: calc(100% - 20px);
+    padding: 10px;
+    margin-bottom: 10px;
+  }
+  
+  #results {
+    list-style-type: none;
+    padding: 0;
+  }
+  
+  #results li {
+    padding: 5px 0;
+    cursor: pointer;
+  }
+  
+  #results li:hover {
+    background-color: #f0f0f0;
+  }
+  
