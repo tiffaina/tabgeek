@@ -5,17 +5,17 @@ body {
   
   #search {
     width: 200px; /* Set a fixed width */
-    padding: 5px;  /* Adjust padding for a more compact size */
+    padding: 2px;  /* Adjust padding for a more compact size */
     margin-bottom: 10px;
     box-sizing: border-box; /* Ensure padding and border are included in the element's total width and height */
   }
   
   #findButton {
     display: block;
-    width: 50%;
-    padding: 10px;
+    width: 100%;
+    padding: 5px;
     margin-bottom: 10px;
-    background-color: #4CAF50; /* Light blue color */
+    background-color: #72c1f3; /* Light blue color */
     color: white;
     border: none;
     cursor: pointer;
