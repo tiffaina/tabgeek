@@ -5,6 +5,7 @@ chrome.runtime.onInstalled.addListener(() => {
   chrome.action.onClicked.addListener((tab) => {
     chrome.tabs.query({}, function(tabs) {
       chrome.storage.local.set({ allTabs: tabs });
+      console.log('All tabs stored:', tabs);  // Debug log
     });
   });
   
