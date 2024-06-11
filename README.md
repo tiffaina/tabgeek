@@ -11,3 +11,27 @@ The script for the popup interface that retrieves stored tab information from lo
 
 ### popup.html
 The HTML structure for the popup interface, containing a search input field and a list to display filtered tabs. It provides the user interface for searching and viewing open tabs.
+
+### Instructions for Running TabGeek in Chrome
+
+1. **Open Chrome and Go to Extensions:**
+   - Open Chrome.
+   - Navigate to `chrome://extensions/` in the address bar.
+
+2. **Enable Developer Mode:**
+   - In the top right corner, toggle the switch to enable "Developer mode".
+
+3. **Load the Extension:**
+   - Click on the "Load unpacked" button.
+   - Select the directory where you cloned the `tabgeek` repository.
+
+4. **Verify Installation:**
+   - The TabGeek extension should now appear in your list of extensions.
+   - You should see the TabGeek icon in the Chrome toolbar.
+
+5. **Use the Extension:**
+   - Click on the TabGeek icon in the Chrome toolbar.
+   - Use the search input in the popup to search through your open tabs.
+  
+  ### Known Bugs
+  When inspecting the console while running the extension, it doesn't log the tab storage from `chrome.storage.local.get(['allTabs']`
