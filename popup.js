@@ -11,7 +11,13 @@ document.addEventListener('DOMContentLoaded', function () {
   console.log('Search input:', searchInput);  // Debug log
   console.log('Find button:', findButton);  // Debug log
 
-
+  // chrome.runtime.onMessage.addListener(function(message, sender, sendResponse) {
+  //   if (message.tabsData) {
+  //       const tabsData = message.tabsData;
+  //       console.log('Tabs data received:', tabsData);
+  //       // Now you can use tabsData for your popup functionality
+  //   }
+// });
 
   const searchTabs = () => {
     const query = searchInput.value.toLowerCase();
