@@ -29,3 +29,8 @@ function searchTabs(query) {
         chrome.runtime.sendMessage({ filteredTabs: filteredTabs });
     });
 }
+
+// Log when tabs are stored in local storage
+chrome.storage.local.onChanged.addListener(function(changes, namespace) {
+    console.log('All tabs stored in local storage:', changes);
+});
