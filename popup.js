@@ -89,16 +89,6 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     });
 }
-  document.addEventListener('click', function(event) {
-    const popup = document.getElementById('popup');
-    const searchInput = document.getElementById('search');
-    const findButton = document.getElementById('findButton');
 
-    // Check if the click is outside the popup and not on search input or find button
-    if (!popup.contains(event.target) && event.target !== searchInput && event.target !== findButton) {
-        // Clicked outside the popup, prevent closing
-        event.preventDefault();
-    }
-  });
 
 });
