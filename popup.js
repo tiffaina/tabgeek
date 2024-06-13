@@ -1,6 +1,9 @@
 document.addEventListener('DOMContentLoaded', function () {
   console.log('Popup DOM content loaded');  // Debug log
 
+  // Notify background script that the popup is opened
+  chrome.runtime.sendMessage({ popupOpen: true });
+
   const searchInput = document.getElementById('search');
   const findButton = document.getElementById('findButton');
   const resultsList = document.getElementById('results');
@@ -8,8 +11,7 @@ document.addEventListener('DOMContentLoaded', function () {
   console.log('Search input:', searchInput);  // Debug log
   console.log('Find button:', findButton);  // Debug log
 
-  // Notify background script that the popup is opened
-  chrome.runtime.sendMessage({ popupOpen: true });
+
 
   const searchTabs = () => {
     const query = searchInput.value.toLowerCase();
