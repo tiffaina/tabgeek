@@ -51,31 +51,39 @@ document.addEventListener('DOMContentLoaded', function () {
   function displayFilteredTabs(filteredTabs) {
     // Clear previous results
     resultsList.innerHTML = '';
-  
+
     // Iterate over each filtered tab
     filteredTabs.forEach(tab => {
-      // Create a list item for the tab
-      const listItem = document.createElement('li');
-  
-      // Create a link for the tab title and URL
-      const link = document.createElement('a');
-      link.textContent = `${tab.title} - ${tab.url}`;
-      link.href = tab.url;
-      link.target = '_blank'; // Open link in a new tab
-  
-      // Append the link to the list item
-      listItem.appendChild(link);
-  
-      // Append the list item to the results list
-      resultsList.appendChild(listItem);
-  
-      // Open tab on click
-      listItem.addEventListener('click', () => {
-        // Update the clicked tab to be active
-        chrome.tabs.update(tab.id, { active: true });
-        // Update the window containing the tab to be focused
-        chrome.windows.update(tab.windowId, { focused: true });
-      });
+        // Create a list item for the tab
+        const listItem = document.createElement('li');
+
+        // Create a link for the tab title and URL
+        const link = document.createElement('a');
+        link.textContent = `${tab.title} - ${tab.url}`;
+        link.href = tab.url;
+        link.target = '_blank'; // Open link in a new tab
+
+        // Append the link to the list item
+        listItem.appendChild(link);
+
+        // Append the list item to the results list
+        resultsList.appendChild(listItem);
+
+        // Open tab on click
+        listItem.addEventListener('click', () => {
+            // Check if the tab is already open
+            chrome.tabs.query({ url: tab.url }, function(existingTabs) {
+                if (existingTabs.length > 0) {
+                    // If tab is already open, activate it
+                    chrome.tabs.update(existingTabs[0].id, { active: true });
+                    chrome.windows.update(existingTabs[0].windowId, { focused: true });
+                } else {
+                    // If tab is not open, open a new one
+                    chrome.tabs.create({ url: tab.url });
+                }
+            });
+        });
     });
-  }
+}
+
 });
