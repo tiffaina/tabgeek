@@ -53,21 +53,28 @@ document.addEventListener('DOMContentLoaded', function () {
     resultsList.innerHTML = '';
 
     // Iterate over each filtered tab
-    filteredTabs.forEach(tab => {
+    filteredTabs.forEach((tab, index) => {
         // Create a list item for the tab
         const listItem = document.createElement('li');
 
-        // Create a link for the tab title and URL
-        const link = document.createElement('a');
-        link.textContent = `${tab.title} - ${tab.url}`;
-        link.href = tab.url;
-        link.target = '_blank'; // Open link in a new tab
+        // Create a span for the tab title
+        const titleSpan = document.createElement('span');
+        titleSpan.textContent = tab.title;
 
-        // Append the link to the list item
-        listItem.appendChild(link);
+        // Append the title span to the list item
+        listItem.appendChild(titleSpan);
 
         // Append the list item to the results list
         resultsList.appendChild(listItem);
+
+        // Add separator line if not the last tab
+        if (index < filteredTabs.length - 1) {
+            const separator = document.createElement('hr');
+            separator.style.border = 'none';
+            separator.style.borderTop = '1px solid #000'; // Thin black line
+            separator.style.margin = '5px 0'; // Add margin
+            resultsList.appendChild(separator);
+        }
 
         // Open tab on click
         listItem.addEventListener('click', () => {
@@ -77,13 +84,17 @@ document.addEventListener('DOMContentLoaded', function () {
                     // If tab is already open, activate it
                     chrome.tabs.update(existingTabs[0].id, { active: true });
                     chrome.windows.update(existingTabs[0].windowId, { focused: true });
-                } else {
-                    // If tab is not open, open a new one
-                    chrome.tabs.create({ url: tab.url });
                 }
             });
         });
     });
 }
+document.addEventListener('click', function(event) {
+  const popup = document.getElementById('popup');
+  if (!popup.contains(event.target)) {
+      // Clicked outside the popup, prevent closing
+      event.preventDefault();
+  }
+});
 
 });
