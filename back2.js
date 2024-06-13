@@ -31,7 +31,7 @@ function searchTabs(query) {
         //     chrome.runtime.sendMessage({ allTabs: tabs });
         // }
         const filteredTabs = tabs.filter(tab => 
-            tab.title.toLowerCase().includes(query.toLowerCase()).trim() || 
+            tab.title.toLowerCase().includes(query.toLowerCase()) || 
             tab.url.toLowerCase().includes(query.toLowerCase())
         );
         console.log('Filtered tabs:', filteredTabs);
