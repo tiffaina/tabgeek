@@ -2,17 +2,18 @@
     "manifest_version": 3,
     "name": "Tab Search",
     "version": "1.0",
-    "description": "Search for tabs across all open windows.",
+    "description": "Search for tabs.",
     "permissions": [
       "tabs",
       "activeTab",
       "storage"
     ],
     "background": {
-      "service_worker": "background.js"
+      "service_worker": "back2.js"
     },
     "action": {
       "default_popup": "popup.html",
+
       "default_icon": "tabfinder.png"
 
     }

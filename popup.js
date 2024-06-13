@@ -1,5 +1,7 @@
 document.addEventListener('DOMContentLoaded', function () {
     console.log('Popup DOM content loaded');  // Debug log
+
+    chrome.runtime.sendMessage({ popupOpen: true });
   
     const searchInput = document.getElementById('search');
     const findButton = document.getElementById('findButton');
