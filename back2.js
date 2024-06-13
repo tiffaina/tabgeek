@@ -8,7 +8,7 @@ chrome.runtime.onMessage.addListener(function(message, sender, sendResponse) {
         console.log('Popup opened');
     } else if (message.searchQuery) {
         console.log('Search query received:', message.searchQuery);
-        // Run your search logic here using message.searchQuery
+        // Run search logic when search query is received
         searchTabs(message.searchQuery);
     }
 });
@@ -21,10 +21,11 @@ function searchTabs(query) {
             return;
         }
         const filteredTabs = tabs.filter(tab => 
-            tab.title.toLowerCase().includes(query) || 
-            tab.url.toLowerCase().includes(query)
+            tab.title.toLowerCase().includes(query.toLowerCase()) || 
+            tab.url.toLowerCase().includes(query.toLowerCase())
         );
         console.log('Filtered tabs:', filteredTabs);
-        // Do whatever you need with filteredTabs
+        // Send message back to popup with filtered tabs
+        chrome.runtime.sendMessage({ filteredTabs: filteredTabs });
     });
 }
