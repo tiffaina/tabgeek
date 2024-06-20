@@ -34,4 +34,4 @@ The HTML structure for the popup interface, containing a search input field and 
    - Use the search input in the popup to search through your open tabs.
   
   ### Known Bugs
-  When inspecting the console while running the extension, it doesn't log the tab storage from `chrome.storage.local.get(['allTabs']`
+Doesn't work for tabs that are Google searches
